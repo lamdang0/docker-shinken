@@ -1,0 +1,33 @@
+define service {
+  use generic-service
+  host_name W-Test
+
+  service_description Uptime
+  check_command check_nt!UPTIME
+
+}
+
+define service {
+  use generic-service
+  host_name W-Test
+
+  service_description Check CPU
+  check_command check_nt!CPULOAD!-l 5,80,90
+
+}
+
+define service{
+    use         generic-service
+    host_name     W-Test
+
+    service_description Check Memory
+    check_command       check_nt!MEMUSE!-w 80 -c 90
+}
+
+define service{
+    use         generic-service
+    host_name           W-Test
+    service_description Check Disk
+    check_command       check_nt!USEDDISKSPACE!-l c -w 80 -c 90
+}
+
